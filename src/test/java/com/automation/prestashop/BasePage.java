@@ -71,4 +71,6 @@ public class BasePage {
 		waitForElementToBeDisplayed(element);
 		Assert.assertTrue(element.getText().contains(message));
 	}
+	
+	
 }
