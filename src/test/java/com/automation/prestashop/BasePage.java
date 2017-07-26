@@ -2,6 +2,8 @@ package com.automation.prestashop;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,6 +52,11 @@ public class BasePage {
 		wait.until(ExpectedConditions.visibilityOf(element));
 
 	}
+	
+	public void waitForElementToDisappear(By locator) {
+		wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
 
 	public void clickElement(WebElement element) {
 		waitForElementToBeDisplayed(element);
@@ -70,6 +77,19 @@ public class BasePage {
 	public void assertionTrue(WebElement element, String message) {
 		waitForElementToBeDisplayed(element);
 		Assert.assertTrue(element.getText().contains(message));
+	}
+	
+	public void wait(int seconds) {
+		try {
+			Thread.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void scrollPageUp() {
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("scroll(0, -250);");
 	}
 	
 	

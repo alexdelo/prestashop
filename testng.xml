@@ -8,7 +8,7 @@
 	<test name="unitTest">
 
 		<classes>
-			<class name="com.automation.tests.CreateAccount"></class>
+			<class name="com.automation.tests.PlaceOrderAsGuestTest"></class>
 		</classes>
 
 	</test>

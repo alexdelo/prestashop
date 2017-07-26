@@ -4,13 +4,13 @@
   <parameter name="url" value="diablos.esteinlucru.ro"/>
   <test name="unitTest(failed)">
     <classes>
-      <class name="com.automation.tests.CreateAccount">
+      <class name="com.automation.tests.PlaceOrderAsGuestTest">
         <methods>
           <include name="setUp"/>
-          <include name="createNewAccount"/>
           <include name="TearDown"/>
+          <include name="placeOrderAsGuest"/>
         </methods>
-      </class> <!-- com.automation.tests.CreateAccount -->
+      </class> <!-- com.automation.tests.PlaceOrderAsGuestTest -->
     </classes>
   </test> <!-- unitTest(failed) -->
 </suite> <!-- Failed suite [unitTest] -->
