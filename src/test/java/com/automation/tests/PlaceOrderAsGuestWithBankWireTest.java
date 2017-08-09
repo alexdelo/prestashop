@@ -8,7 +8,7 @@ import com.automation.objects.HomePage;
 import com.automation.objects.ProductDetailsPage;
 import com.automation.prestashop.BasePage;
 
-public class PlaceOrderAsGuestTest extends BasePage {
+public class PlaceOrderAsGuestWithBankWireTest extends BasePage {
 
 	HomePage home;
 	CategoryPage category;
@@ -16,7 +16,7 @@ public class PlaceOrderAsGuestTest extends BasePage {
 	CheckoutPage checkout;
 	
 	@Test
-	public void placeOrderAsGuest() {
+	public void placeOrderAsGuestWithBankWire() {
 		home = new HomePage(driver);
 		home.goToCategoryPage();
 		category = new CategoryPage(driver);
@@ -26,7 +26,7 @@ public class PlaceOrderAsGuestTest extends BasePage {
 		PDP.beginCheckout();
 		checkout = new CheckoutPage(driver);
 		checkout.fillInShippingAddress();
-		checkout.selectRambursPaymentMethod();
+		checkout.selectBankWirePaymentMethod();
 		checkout.placeOrder();
 	}
 

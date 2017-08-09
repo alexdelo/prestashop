@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [unitTest]">
-  <parameter name="url" value="diablos.esteinlucru.ro"/>
+  <parameter name="url" value="amafashion.esteinlucru.ro"/>
   <test name="unitTest(failed)">
     <classes>
-      <class name="com.automation.tests.PlaceOrderAsGuestTest">
+      <class name="com.automation.tests.ApplyPromoCodeTest">
         <methods>
           <include name="setUp"/>
+          <include name="ApplyPromoCode"/>
           <include name="TearDown"/>
-          <include name="placeOrderAsGuest"/>
         </methods>
-      </class> <!-- com.automation.tests.PlaceOrderAsGuestTest -->
+      </class> <!-- com.automation.tests.ApplyPromoCodeTest -->
     </classes>
   </test> <!-- unitTest(failed) -->
 </suite> <!-- Failed suite [unitTest] -->

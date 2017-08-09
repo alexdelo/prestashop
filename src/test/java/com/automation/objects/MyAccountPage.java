@@ -66,7 +66,7 @@ public class MyAccountPage extends BasePage {
 	@FindBy(id = "SubmitLogin")
 	public WebElement submitLoginButton;
 	
-	@FindBy(css = ".welcome.header_item")
+	@FindBy(css = ".info-account")
 	public WebElement loginConfirmation;
 	
 	
@@ -76,7 +76,7 @@ public class MyAccountPage extends BasePage {
 		fillInValue(emailLogin, EMAIL_LOGIN);
 		fillInValue(customerPassword, PASSWORD_LOGIN);
 		clickElement(submitLoginButton);
-		assertionTrue(loginConfirmation, "BUN VENIT");
+		assertionTrue(loginConfirmation, "Welcome to your account");
 	}
 	
 	public void fillInEmailAddressToCreateAccount() {
@@ -85,7 +85,6 @@ public class MyAccountPage extends BasePage {
 	}
 	
 	public void fillInDetailsToCreateAccountAndSubmit() {
-		clickElement(gender);
 		fillInValue(customerFirstName, FIRSTNAME);
 		fillInValue(customerLastName, LASTNAME);
 		fillInValue(customerPassword, PASSWORD);
