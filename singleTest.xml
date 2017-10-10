@@ -4,6 +4,7 @@
 <suite name="unitTest">
 
 	<parameter name="url" value="amafashion.esteinlucru.ro"></parameter>
+	<parameter name="docker" value="off"></parameter>
 
 	<test name="unitTest">
 

@@ -69,4 +69,6 @@ local.properties
 *.iml
 
 /Screenshots/
+
 /Reports/
+/test-output/
