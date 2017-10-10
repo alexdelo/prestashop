@@ -14,24 +14,39 @@ public class ProductDetailsPage extends BasePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id = "add_to_cart_custom")
+	@FindBy(id = "add_to_cart")
 	public WebElement addToCart;
 	
-	@FindBy(css = ".ajax_cart_quantity.ajax_cart_middle")
+	@FindBy(className = "cart_quantity")
 	public WebElement numberOfProductsInCart;
 	
-	@FindBy(id = "blockcart_top_wrap")
+	@FindBy(css = ".fa.fa-shopping-bag")
 	public WebElement cartButton;
+	
+	@FindBy(id = "button_goto_cart")
+	public WebElement beginCheckout;
+	
+	@FindBy(css = ".fa.fa-trash")
+	public WebElement removeButton;
+	
 	
 	
 	public void addToCart() {
 		clickElement(addToCart);
-		wait(4);
+		wait(2);
 		assertionTrue(numberOfProductsInCart, "1");
 	}
 	
 	public void beginCheckout() {
-		clickElement(cartButton);
+		hoverOverElement(cartButton);
+		clickElement(beginCheckout);
+	}
+	
+	public void removeProduct() {
+		hoverOverElement(cartButton);
+		clickElement(removeButton);
+		wait(2);
+		assertionTrue(numberOfProductsInCart, "0");
 	}
 
 }

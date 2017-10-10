@@ -19,10 +19,10 @@ public class CategoryPage extends BasePage {
 	
 	Random random = new Random();
 
-	@FindBy(className  = "product_img_link")
+	@FindBy(className  = "product-image")
 	public List<WebElement> products;
 	
-	@FindBy(className = "zoomPad")
+	@FindBy(className = "bx-viewport")
 	public WebElement productImage;
 	
 	

@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-unitTest">
-              <span class="suite-name border-passed">unitTest</span>
+              <span class="suite-name border-failed">unitTest</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-unitTest">
-                    <span>C:\projects\prestashop\testng.xml</span>
+                    <span>C:\projects\amafashion\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-unitTest" class="hide-methods passed suite-unitTest"> (hide)</a> <!-- hide-methods passed suite-unitTest -->
-                      <a href="#" panel-name="suite-unitTest" class="show-methods passed suite-unitTest"> (show)</a> <!-- show-methods passed suite-unitTest -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-unitTest" class="hide-methods failed suite-unitTest"> (hide)</a> <!-- hide-methods failed suite-unitTest -->
+                      <a href="#" panel-name="suite-unitTest" class="show-methods failed suite-unitTest"> (show)</a> <!-- show-methods failed suite-unitTest -->
                     </span>
-                    <div class="method-list-content passed suite-unitTest">
+                    <div class="method-list-content failed suite-unitTest">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-unitTest" title="com.automation.tests.PlaceOrderAsGuestTest" hash-for-method="placeOrderAsGuest">placeOrderAsGuest</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-unitTest" title="com.automation.tests.ApplyPromoCodeTest" hash-for-method="ApplyPromoCode">ApplyPromoCode</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-unitTest -->
+                    </div> <!-- method-list-content failed suite-unitTest -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,35 +117,43 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-unitTest" class="panel unitTest">
-          <div class="suite-unitTest-class-passed">
+          <div class="suite-unitTest-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.automation.tests.PlaceOrderAsGuestTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">com.automation.tests.ApplyPromoCodeTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="placeOrderAsGuest">
-                  </a> <!-- placeOrderAsGuest -->
-                  <span class="method-name">placeOrderAsGuest</span>
+                  <a name="ApplyPromoCode">
+                  </a> <!-- ApplyPromoCode -->
+                  <span class="method-name">ApplyPromoCode</span>
+                  <div class="stack-trace">java.lang.NumberFormatException: For input string: &quot;[Ljava.lang.String;@626abbd0&quot;
+	at sun.misc.FloatingDecimal.readJavaFormatString(Unknown Source)
+	at sun.misc.FloatingDecimal.parseDouble(Unknown Source)
+	at java.lang.Double.parseDouble(Unknown Source)
+	at com.automation.objects.CheckoutPage.applyPromoCode(CheckoutPage.java:198)
+	at com.automation.tests.ApplyPromoCodeTest.ApplyPromoCode(ApplyPromoCodeTest.java:28)
+... Removed 25 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-unitTest-class-passed -->
+          </div> <!-- suite-unitTest-class-failed -->
         </div> <!-- panel unitTest -->
         <div panel-name="test-xml-unitTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\projects\prestashop\testng.xml</span>
+            <span class="header-content">C:\projects\amafashion\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;unitTest&quot;&gt;
-  &lt;parameter name=&quot;url&quot; value=&quot;diablos.esteinlucru.ro&quot;/&gt;
+  &lt;parameter name=&quot;url&quot; value=&quot;amafashion.esteinlucru.ro&quot;/&gt;
   &lt;test name=&quot;unitTest&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.automation.tests.PlaceOrderAsGuestTest&quot;/&gt;
+      &lt;class name=&quot;com.automation.tests.ApplyPromoCodeTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- unitTest --&gt;
 &lt;/suite&gt; &lt;!-- unitTest --&gt;
@@ -187,14 +195,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'placeOrderAsGuest')
-data.setCell(0, 2, 'com.automation.tests.PlaceOrderAsGuestTest')
-data.setCell(0, 3, 19797);
+data.setCell(0, 1, 'ApplyPromoCode')
+data.setCell(0, 2, 'com.automation.tests.ApplyPromoCodeTest')
+data.setCell(0, 3, 9681);
 window.suiteTableData['unitTest']= { tableData: data, tableDiv: 'times-div-unitTest'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 19 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-unitTest">
               </div> <!-- times-div-unitTest -->
             </div> <!-- times-div -->
@@ -220,18 +228,20 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.automation.tests.PlaceOrderAsGuestTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.automation.tests.ApplyPromoCodeTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setUp(diablos.esteinlucru.ro)</span>
+                <span class="method-name">setUp(amafashion.esteinlucru.ro)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">placeOrderAsGuest</span>
-                <span class="method-start">7747 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">ApplyPromoCode</span>
+                <span class="method-start">6799 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">TearDown([TestResult name=placeOrderAsGuest status=SUCCESS method=PlaceOrderAsGuestTest.placeOrderAsGuest()[p...)</span>
-                <span class="method-start">27545 ms</span>
+                <span class="method-name">TearDown([TestResult name=ApplyPromoCode status=FAILURE method=ApplyPromoCodeTest.ApplyPromoCode()[pri:0, ins...)</span>
+                <span class="method-start">16483 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

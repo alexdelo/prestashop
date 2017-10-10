@@ -17,7 +17,7 @@ public class LoginTest extends BasePage {
 		home.goToMyAccountPage();
 		account = new MyAccountPage(driver);
 		account.fillInCredentialsToLogin();
-		home.logout();
+		//home.logout();
 	}
 
 }

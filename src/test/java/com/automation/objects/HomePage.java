@@ -1,5 +1,6 @@
 package com.automation.objects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,17 +15,21 @@ public class HomePage extends BasePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css  = ".header_item.login")
+	@FindBy(id  = "user_infoblock-top")
 	public WebElement loginButton;
 	
 	@FindBy(css = ".header_item.logout")
 	public WebElement logoutButton;
 	
-	@FindBy(id = "st_advanced_ma11")
+	@FindBy(css = ".nav.navbar-nav")
+	public WebElement superCategories;
+	
+	@FindBy(css = ".menu-content")
 	public WebElement categories;
 	
+	
 	public void goToMyAccountPage() {
-		clickElement(loginButton);
+		clickElement(loginButton.findElements(By.tagName("a")).get(0));
 	}
 	
 	public void logout() {
@@ -33,6 +38,7 @@ public class HomePage extends BasePage {
 	}
 	
 	public void goToCategoryPage() {
-		clickElement(categories);
+		hoverOverElement(superCategories.findElements(By.tagName("a")).get(1));
+		clickElement(categories.findElements(By.tagName("a")).get(1));
 	}
 }

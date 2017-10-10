@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="unitTest">
+<suite name="regression suite"  parallel="classes" thread-count="5">
 
-	<parameter name="url" value="diablos.esteinlucru.ro"></parameter>
+	<listeners>
+		<listener class-name="com.automation.prestashop.RetryListener" />
+	</listeners>
 
-	<test name="unitTest">
+	<parameter name="url" value="amafashion.esteinlucru.ro"></parameter>
+	<parameter name="docker" value="on"></parameter>
+
+	<test name="regression suite">
 
 		<classes>
-			<class name="com.automation.tests.PlaceOrderAsGuestTest"></class>
+			<class name="com.automation.tests.ApplyPromoCodeTest"></class>
+			<class name="com.automation.tests.CreateAccountTest"></class>
+			<class name="com.automation.tests.LoginTest"></class>
+			<class name="com.automation.tests.PlaceOrderAsGuestWithBankWireTest"></class>
+			<class name="com.automation.tests.PlaceOrderAsGuestWithMobilePayTest"></class>
+			<class name="com.automation.tests.PlaceOrderAsGuestWithRambursTest"></class>
+			<class name="com.automation.tests.RemoveProductFromBagTest"></class>
+			<class name="com.automation.tests.RemoveProductFromCheckoutTest"></class>
+			<class name="com.automation.tests.SignInFromCheckoutAndPlaceOrderWithBankWireTest"></class>
+			<class name="com.automation.tests.SignInFromCheckoutAndPlaceOrderWithMobilePayTest"></class>
+			<class name="com.automation.tests.SignInFromCheckoutAndPlaceOrderWithRambursTest"></class>			
 		</classes>
 
 	</test>
