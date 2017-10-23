@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
 	@FindBy(id  = "user_infoblock-top")
 	public WebElement loginButton;
 	
-	@FindBy(css = ".header_item.logout")
+	@FindBy(css = ".hidden-xs.logout-link")
 	public WebElement logoutButton;
 	
 	@FindBy(css = ".nav.navbar-nav")
@@ -34,7 +34,7 @@ public class HomePage extends BasePage {
 	
 	public void logout() {
 		clickElement(logoutButton);
-		assertionTrue(loginButton, "AUTENTIFICARE");
+		assertionTrue(loginButton, "CONTUL MEU");
 	}
 	
 	public void goToCategoryPage() {

@@ -16,15 +16,15 @@ public class MyAccountPage extends BasePage {
 	}
 	
 	public String EMAIL_CREATE_ACCOUNT = GenerateRandomString.randomEmail();
-	public String FIRSTNAME = "Alex";
-	public String LASTNAME = "Deloreanu";
+	public String FIRSTNAME = "Automation";
+	public String LASTNAME = "Testing";
 	public String PASSWORD = "stevemadden";
 	public String BIRTHDAY_VALUE = "3";
 	public String BIRTHMONTH_VALUE = "3";
 	public String BIRTHYEAR_VALUE = "1990";
 	public String ACCOUNT_CREATION_CONF_MESSAGE = "Contul tau a fost creat";
 	
-	public String EMAIL_LOGIN = "automation@testing.com";
+	public String EMAIL_LOGIN = "testaccount@email.com";
 	public String PASSWORD_LOGIN = "stevemadden";
 	
 	@FindBy(id = "email_create")
@@ -76,7 +76,7 @@ public class MyAccountPage extends BasePage {
 		fillInValue(emailLogin, EMAIL_LOGIN);
 		fillInValue(customerPassword, PASSWORD_LOGIN);
 		clickElement(submitLoginButton);
-		assertionTrue(loginConfirmation, "Welcome to your account");
+		assertionTrue(loginConfirmation, "Bun venit in contul tau");
 	}
 	
 	public void fillInEmailAddressToCreateAccount() {

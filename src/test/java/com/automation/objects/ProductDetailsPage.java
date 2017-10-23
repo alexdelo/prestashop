@@ -1,5 +1,9 @@
 package com.automation.objects;
 
+import java.util.List;
+import java.util.Random;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,6 +17,8 @@ public class ProductDetailsPage extends BasePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	Random random = new Random();
 	
 	@FindBy(id = "add_to_cart")
 	public WebElement addToCart;
@@ -29,7 +35,13 @@ public class ProductDetailsPage extends BasePage {
 	@FindBy(css = ".fa.fa-trash")
 	public WebElement removeButton;
 	
+	@FindBy(id = "attributes")
+	public WebElement sizeRow;
 	
+	public void selectSize() {	
+		List<WebElement> sizes = sizeRow.findElements(By.tagName("a"));
+		clickElement(sizes.get(random.nextInt(sizes.size())));
+	}
 	
 	public void addToCart() {
 		clickElement(addToCart);

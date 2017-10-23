@@ -22,6 +22,7 @@ public class RemoveProductFromBagTest extends BasePage {
 		category = new CategoryPage(driver);
 		category.clickRandomProduct();
 		PDP = new ProductDetailsPage(driver);
+		PDP.selectSize();
 		PDP.addToCart();
 		PDP.removeProduct();
 	}

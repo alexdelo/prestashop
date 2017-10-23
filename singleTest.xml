@@ -9,7 +9,7 @@
 	<test name="unitTest">
 
 		<classes>
-			<class name="com.automation.tests.CreateAccountTest"></class>
+			<class name="com.automation.tests.SignInFromCheckoutAndPlaceOrderWithRambursTest"></class>
 		</classes>
 
 	</test>

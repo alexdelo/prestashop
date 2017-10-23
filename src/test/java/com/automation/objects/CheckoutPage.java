@@ -1,11 +1,16 @@
 package com.automation.objects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.automation.prestashop.BasePage;
+import com.google.common.base.CharMatcher;
+
+import junit.framework.Assert;
 
 public class CheckoutPage extends BasePage {
 
@@ -17,12 +22,12 @@ public class CheckoutPage extends BasePage {
 	public String FIRSTNAME = "Automation";
 	public String LASTNAME = "Testing";
 	public String STREET_ADDRESS = "Sirenelor, 91";
-	public String EMAIL = "automation2@testing.com";
+	public String EMAIL = "testaccount2@email.com";
 	public String ZIP_CODE = "050855";
 	public String CITY = "Bucuresti";
 	public String PHONE = "0755467543";
 
-	public String EMAIL_LOGIN = "automation@testing.com";
+	public String EMAIL_LOGIN = "testaccount@email.com";
 	public String PASSWORD_LOGIN = "stevemadden";
 
 	@FindBy(id = "customer_firstname")
@@ -70,8 +75,8 @@ public class CheckoutPage extends BasePage {
 	@FindBy(id = "module_payment_211_0")
 	public WebElement payWithMobilePay;
 
-	@FindBy(id = "module_payment_3_0")
-	public WebElement payWithBankWire;
+	@FindBy(className = "payment_input")
+	public List<WebElement> paymentOptions;
 
 	@FindBy(id = "btn_place_order")
 	public WebElement placeOrder;
@@ -79,7 +84,7 @@ public class CheckoutPage extends BasePage {
 	@FindBy(css = ".button.btn.btn-primary")
 	public WebElement confirmPlaceOrder;
 
-	@FindBy(className = "page-heading")
+	@FindBy(className = "confirm")
 	public WebElement orderConfirmation;
 
 	@FindBy(id = "opc_show_login")
@@ -104,6 +109,7 @@ public class CheckoutPage extends BasePage {
 	public WebElement submitPayment;
 
 	public void clickSignInButton() {
+		wait(2);
 		clickElement(signInButton);
 	}
 
@@ -111,6 +117,7 @@ public class CheckoutPage extends BasePage {
 		fillInValue(loginEmailField, EMAIL_LOGIN);
 		fillInValue(loginPasswordField, PASSWORD_LOGIN);
 		clickElement(submitLoginButton);
+		wait(2);
 	}
 
 	public void fillInShippingAddress() {
@@ -118,8 +125,6 @@ public class CheckoutPage extends BasePage {
 		fillInValue(firstName, FIRSTNAME);
 		fillInValue(lastName, LASTNAME);
 		fillInValue(email, EMAIL);
-		fillInValue(deliveryFirstName, FIRSTNAME);
-		fillInValue(deliveryLastname, LASTNAME);
 		fillInValue(streetAddress, STREET_ADDRESS);
 		selectValueFromDropdown(state, "313");
 		fillInValue(city, CITY);
@@ -128,21 +133,29 @@ public class CheckoutPage extends BasePage {
 
 	public void selectRambursPaymentMethod() {
 		wait(2);
-		clickElement(payWithRamburs);
+		clickElement(paymentOptions.get(0));
 	}
 
 	public void selectMobilePayPaymentMethod() {
 		wait(2);
-		clickElement(payWithMobilePay);
-		clickElement(placeOrder);
+		clickElement(paymentOptions.get(1));
 	}
 
 	public void selectBankWirePaymentMethod() {
 		wait(2);
-		clickElement(payWithBankWire);
+		clickElement(paymentOptions.get(2));
 	}
+	
+	@FindBy(id = "cgv")
+	public WebElement termsAndConditions;
 
+	public void checkTermsAndConditions() {
+		scrollIntoView(termsAndConditions);
+		clickElement(termsAndConditions);
+	}
+	
 	public void fillInPaymentInformationAndSubmit() {
+		clickElement(placeOrder);
 		fillInValue(paymentCardNumber, "9900004810225098");
 		fillInValue(paymentCardName, "Test Test");
 		wait(2);
@@ -151,14 +164,14 @@ public class CheckoutPage extends BasePage {
 		fillInValue(paymentCVV2Number, "111");
 		clickElement(submitPayment);
 		waitForElementToBeDisplayed(orderConfirmation);
-		assertionTrue(orderConfirmation, "CONFIRMAREA COMENZII");
+		assertionTrue(orderConfirmation, "FELICITARI! COMANDA TA A FOST PLASATA CU SUCCES!");
 	}
 
 	public void placeOrder() {
 		clickElement(placeOrder);
 		clickElement(confirmPlaceOrder);
 		waitForElementToBeDisplayed(orderConfirmation);
-		assertionTrue(orderConfirmation, "CONFIRMAREA COMENZII");
+		assertionTrue(orderConfirmation, "FELICITARI! COMANDA TA A FOST PLASATA CU SUCCES!");
 	}
 
 	@FindBy(css = ".btn-number.cart_quantity_delete")
@@ -174,10 +187,10 @@ public class CheckoutPage extends BasePage {
 		assertionTrue(emptyCartMessage, "Cosul tau de cumparaturi este gol");
 	}
 
-	@FindBy(className = "price")
+	@FindBy(id = "total_product")
 	public WebElement productPrice;
 
-	@FindBy(id = "total_discount")
+	@FindBy(className = "cart_discount_price")
 	public WebElement totalDiscount;
 
 	@FindBy(id = "total_price")
@@ -186,13 +199,26 @@ public class CheckoutPage extends BasePage {
 	@FindBy(id = "discount_name")
 	public WebElement promoCodeField;
 
+	@FindBy(className = "cart_discount_name")
+	public WebElement promoCodeName;
+	
 	public WebElement submitAddDiscount;
+	
+	
 
 	public void applyPromoCode() {
 		waitForElementToBeDisplayed(promoCodeField);
-		fillInValue(promoCodeField, "testpromo");
+		fillInValue(promoCodeField, "automationPromoCode");
 		clickElement(submitAddDiscount);
-		wait(2);
+		waitForElementToBeDisplayed(promoCodeName);
+		assertionTrue(promoCodeName, "automation testing");
+		int merchandiseTotal = Integer.parseInt(CharMatcher.digit().retainFrom(productPrice.getText()));
+		int orderDiscount = Integer.parseInt(CharMatcher.digit().retainFrom(totalDiscount.getText()));		
+		if (merchandiseTotal % 2 == 0) {
+			Assert.assertEquals(merchandiseTotal / 2, orderDiscount);
+		} else {
+			Assert.assertEquals((merchandiseTotal + 1) / 2, orderDiscount);
+		}	
 	}
 
 

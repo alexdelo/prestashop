@@ -22,6 +22,7 @@ public class RemoveProductFromCheckoutTest extends BasePage {
 		category = new CategoryPage(driver);
 		category.clickRandomProduct();
 		PDP = new ProductDetailsPage(driver);
+		PDP.selectSize();
 		PDP.addToCart();
 		PDP.beginCheckout();
 		checkout = new CheckoutPage(driver);

@@ -22,12 +22,14 @@ public class SignInFromCheckoutAndPlaceOrderWithMobilePayTest extends BasePage {
 		category = new CategoryPage(driver);
 		category.clickRandomProduct();
 		PDP = new ProductDetailsPage(driver);
+		PDP.selectSize();
 		PDP.addToCart();
 		PDP.beginCheckout();
 		checkout = new CheckoutPage(driver);
 		checkout.clickSignInButton();
 		checkout.signInFromCheckout();
 		checkout.selectMobilePayPaymentMethod();
+		checkout.checkTermsAndConditions();
 		checkout.fillInPaymentInformationAndSubmit();
 	}
 

@@ -19,10 +19,10 @@ public class GenerateRandomString {
 
 	public static String randomEmail() {
 
-		int length = 3;
+		int length = 10;
 		String name = "0123456789abcdefghijklmnoprstuwyzx";
-		String firstDomain = "0123456789abcdefghijklmnoprstuwyzx";
-		String secondDomain = "abcdefghijklmnoprstuwyzx";
+		String firstDomain = "email";
+		String secondDomain = "com";
 
 		String email = new String();
 
@@ -31,15 +31,15 @@ public class GenerateRandomString {
 			sb.append(name.charAt(random.nextInt(name.length())));
 		email += sb;
 
-		sb = new StringBuilder(length);
+		/*sb = new StringBuilder(length);
 		for (int i = 0; i < length; i++)
-			sb.append(firstDomain.charAt(random.nextInt(firstDomain.length())));
-		email += "@" + sb;
+			sb.append(firstDomain.charAt(random.nextInt(firstDomain.length())));*/
+		email += "@" + firstDomain;
 
-		sb = new StringBuilder(length);
+		/*sb = new StringBuilder(length);
 		for (int i = 0; i < length; i++)
-			sb.append(secondDomain.charAt(random.nextInt(secondDomain.length())));
-		email += "." + sb;
+			sb.append(secondDomain.charAt(random.nextInt(secondDomain.length())));*/
+		email += "." + secondDomain;
 
 		return email;
 	}

@@ -15,12 +15,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-import junit.framework.Assert;
 
 
 public class BasePage {
@@ -103,6 +103,12 @@ public class BasePage {
 	public void scrollPageUp() {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("scroll(0, -250);");
+	}
+	
+	public WebElement scrollIntoView(WebElement element) {
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", element);
+		return element;
 	}
 
 	public WebElement hoverOverElement(WebElement element) {

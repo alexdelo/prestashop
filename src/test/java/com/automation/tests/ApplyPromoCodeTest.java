@@ -16,12 +16,13 @@ public class ApplyPromoCodeTest extends BasePage {
 	CheckoutPage checkout;
 	
 	@Test
-	public void ApplyPromoCode() {
+	public void applyPromoCode() {
 		home = new HomePage(driver);
 		home.goToCategoryPage();
 		category = new CategoryPage(driver);
 		category.clickRandomProduct();
 		PDP = new ProductDetailsPage(driver);
+		PDP.selectSize();
 		PDP.addToCart();
 		PDP.beginCheckout();
 		checkout = new CheckoutPage(driver);
